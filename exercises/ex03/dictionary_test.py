@@ -4,20 +4,32 @@ __author__ = "730483620"
 
 from exercises.ex03.dictionary import invert, favorite_color, count, bin_len
 
+import pytest
+
 
 def test_invert_use() -> None:
     """Test use cases for invert function"""
     assert invert({"blue": "hair", "red": "purse"}) == {"hair": "blue", "purse": "red"}
+
+ def test_invert_use() -> None: 
+     """Test use cases for invert function"""  
     assert invert({"tar": "heel", "sour": "patch", "green": "leaves"}) == {
         "heel": "tar",
         "patch": "sour",
         "leaves": "green",
     }
 
-
 def test_invert_edge() -> None:
     """Test edge case for invert function"""
     assert invert({}) == {}
+
+
+
+def test_invert_key_error() -> None:
+    "Test for KeyError"
+    with pytest.raises(KeyError):
+        my_dictionary = {"blue": "hair", "red": "hair"}
+        invert(my_dictionary)
 
 
 def test_count_edge() -> None:
@@ -28,6 +40,9 @@ def test_count_edge() -> None:
 def test_count_use() -> None:
     """Test use cases for count function"""
     assert count(["soda"]) == {"soda": 1}
+   
+ def test_count_use() -> None:  
+    """Test use cases for count function"""
     assert count(["soda", "pop", "pop", "soda"]) == {"soda": 2, "pop": 2}
 
 
@@ -38,12 +53,12 @@ def test_favorite_color_edge() -> None:
 
 def test_favorite_color() -> None:
     """Test use cases for count function"""
-    assert (
-        favorite_color(
-            {"Alexis": "blue", "Porsche": "pink", "Katy": "blue", "Sephora": "pink"}
-        )
-        == "pink"
-    )
+    favs = {"Alexis": "blue", "Porsche": "pink", "Katy": "blue", "Sephora": "pink"}
+    assert favorite_color(favs) == "pink"
+        
+    
+   def test_favorite_color() -> None: 
+    """Test use cases for count function"""
     assert (
         favorite_color(
             {"Alexis": "blue", "Porsche": "pink", "Tom": "blue", "Sierra": "blue"}
@@ -59,8 +74,13 @@ def test_bin_len_edge() -> None:
 
 def test_bin_len_use() -> None:
     """Test uses cases for bin_len function"""
-    assert bin_len(["wash", "cell", "line"]) == {3: {"wash", "cell", "line"}}
-    assert bin_len(["unc", "bye", "money", "mouse"]) == {
+    words = ["wash", "cell", "line"]
+    assert bin_len(words) == {3: {"wash", "cell", "line"}}
+    
+def test_bin_len_use() -> None:  
+     """Test uses cases for bin_len function"""
+    words = ["unc", "bye", "money", "mouse"]
+    assert bin_len(words) == {
         3: {"unc", "bye"},
         5: {"money", "mouse"},
     }
