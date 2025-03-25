@@ -6,7 +6,7 @@ __author__ = "730483620"
 def invert(input: dict[str, str]) -> dict[str, str]:
     output: dict[str, str] = {}
     for key, value in input.items():
-        if vlaue in output:
+        if value in output:
             raise KeyError("Duplicate value")
         output[value] = key
 
@@ -26,8 +26,8 @@ def count(elements: list[str]) -> dict[str, int]:
 
 
 def favorite_color(favs: dict[str, str]) -> str:
-    """Returns the most frequently occuring favorite color. If tie, returns first color encountered"""
-    colors = [color for color in favorites.values()]
+    """Returns the most frequently occuring favorite color"""
+    colors = [color for color in favs.values()]
     count_colors = count(colors)
 
     max_count = 0
@@ -42,10 +42,10 @@ def favorite_color(favs: dict[str, str]) -> str:
 
 
 def bin_len(terms: list[str]) -> dict[int, set[str]]:
-    """Bins a list of strings into a dictionary where key is the string length and the valye is a set of strings of that length"""
+    """Bins strings by their lengths into a dictionary with lengths as keys and sets of strings as values."""
     bins: dict[int, set[str]] = {}
 
-    for word in words:
+    for word in terms:
         length = len(word)
         if length not in bins:
             bins[length] = set()
