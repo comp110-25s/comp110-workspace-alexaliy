@@ -1,6 +1,8 @@
+"""Simulation driver for the River ecosystem."""
+
 __author__: str = "730483620"
 
-from river import River
+from exercises.EX04.river import River
 
 
 # A River object with 10 Fish and 2 Bears
