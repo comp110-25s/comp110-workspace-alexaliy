@@ -1,5 +1,7 @@
 """File to define Bear class."""
 
+__author__: str = "730483620"
+
 
 class Bear:
     age: int

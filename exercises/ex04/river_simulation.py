@@ -1,4 +1,6 @@
-from exercises.ex04.river import River
+__author__: str = "730483620"
+
+from river import River
 
 
 # A River object with 10 Fish and 2 Bears

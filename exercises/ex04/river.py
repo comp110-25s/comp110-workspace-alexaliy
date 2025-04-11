@@ -1,7 +1,9 @@
 """File to define River class."""
 
-from exercises.ex04.fish import Fish
-from exercises.ex04.bear import Bear
+__author__: str = "730483620"
+
+from fish import Fish
+from bear import Bear
 
 
 class River:
@@ -21,30 +23,37 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """Animals pass away from old age"""
         self.fish = [f for f in self.fish if f.age <= 3]
         self.bears = [b for b in self.bears if b.age <= 5]
 
     def remove_fish(self, amount: int):
+        """Fish removed from fishing"""
         self.fish = self.fish[amount:]
 
     def bears_eating(self):
+        """Taking into account bear eating fish"""
         for bear in self.bears:
             if len(self.fish) >= 5:
                 self.remove_fish(3)
                 bear.eat(3)
 
     def check_hunger(self):
+        """Taking into account if bear gets hungry"""
         self.bears = [b for b in self.bears if b.hunger_score >= 0]
 
     def repopulate_fish(self):
+        """Taking into account fish births"""
         offspring = (len(self.fish) // 2) * 4
         self.fish += [Fish() for _ in range(offspring)]
 
     def repopulate_bears(self):
+        """Taking into account bear births"""
         offspring = len(self.bears) // 2
         self.bears += [Bear() for _ in range(offspring)]
 
     def view_river(self):
+        """Population of the river"""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
@@ -74,5 +83,6 @@ class River:
         self.view_river()
 
     def one_river_week(self):
+        """Stimulate a week in the river"""
         for __ in range(7):
             self.one_river_day()
